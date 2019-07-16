@@ -159,17 +159,18 @@ un documento formato pdf, el cual haya sido generado mediante Latex. }
 \end{enumerate}
 
 \section*{Ejercicio \#2: Abstracci\'on (50\%)}
-Consideremos un dado de seis caras colocado en una superficie:
+Consideremos dos dado de seis caras colocado en una superficie:
 \begin{itemize}
         \item{La cara opuesta a la superficie muestra el \emph{numero actual} en que se encuentra el dado.}
         \item{El dado puede cambiar su \emph{numero actual} rotando 90 grados en cualquiera de
         sus 4 lados. La imagen muestra el dado cambiando su \emph{nuero actual} de ``2'' a ``6''
         rotando sobre la cara ``1''.}
+        \item{Solamente pude girar un dado a la vez.}
 \end{itemize}
 \begin{center}
 \includegraphics[width=3cm]{die.png}
 \end{center}
-Su deber es modelar el dado y sus transiciones de estado como un \emph{grafo}. Para ello debe
+Su deber es modelar los dados y sus transiciones de estado como un \emph{grafo}. Para ello debe
 indicar:
 \begin{enumerate}
         \item{El \emph{conjunto} de nodos del grafo.}
@@ -180,8 +181,8 @@ ocurrir en el objeto que esta siendo modelado.
 
 \section*{Ejercicio \#3 (40\%)}
 Indique como puede utilizar el \emph{grafo} creado en el paso anterior para simular
-un lanzamiento de dados. Supongamos, que el dado siempre inicia en el \emph{numero actual}
-``1'':
+un lanzamiento de dados. Supongamos, que los dados siempre inician en el \emph{numero actual}
+``1'' y ``1'':
 \begin{itemize}
         \item{¿Que estructura de datos podria representar un lanzamiento de dados?}
         \item{¿Que algoritmo podriamos utilizar para generar dicha estructura?}
