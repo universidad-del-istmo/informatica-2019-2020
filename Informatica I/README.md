@@ -2,7 +2,7 @@
 
 ## Linux
 
-Durante este curso, el profesor utilizara Manjaro (https://manjaro.org/download/kde/).
+Durante este curso, el profesor utilizara Xubuntu (18.04 - 32bits) (https://xubuntu.org/release/18-04/).
 Como sistema de trabajo. Los programas que se utilizaran corren en cualquier plataforma (Windows/Mac OSX/Linux)
 por lo cual no es necesario instalar Fedora. Sin embargo, si quiere poder replicar exactamente todo lo que
 se hace durante la clase. Se utilizara un tiempo de laboratorio para mostrar como configurar Fedora con
