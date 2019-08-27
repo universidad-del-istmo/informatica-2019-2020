@@ -104,79 +104,51 @@
 
 \begin{center}
         \horrule{0.5pt}
-        \huge{Hoja de trabajo \#5} \\
-        \large{Fecha de entrega: 27 de Agosto, 2019 - 11:59pm} \\
+        \huge{Hoja de trabajo \#6} \\
+        \large{Fecha de entrega: 10 de Septiembre, 2019 - 11:59pm} \\
         \horrule{1pt}
 \end{center}
 
 \emph{Instrucciones: Resolver cada uno de los ejercicios siguiendo sus respectivas
 instrucciones. El trabajo debe ser entregado a traves de Github, en su repositorio del curso, colocado en una
-carpeta llamada "Laboratorio 5". Al menos que la pregunta indique diferente, todas las
+carpeta llamada "Laboratorio 6". Al menos que la pregunta indique diferente, todas las
 respuestas a preguntas escritas deben presentarse en un documento formato pdf, el cual
 haya sido generado mediante Latex. }\\\\
 
 {\bf Nota: } Para esta tarea, debe tener instalado ``Elm'' en su computadora. Puede obtener
 el lenguaje ``Elm'' en: https://guide.elm-lang.org/install.html
 
-\section*{Ejercicio \#1 (20\%)}
-Crear un proyecto utilizando elm entro de la carpeta ``Hoja de trabajo 5''.
-Para ello debe ejecutar el comando:\\\\
-$>\mathtt{elm\ init}$\\\\
-Y responder ``Y'' a la pregunta. Puede ver el contendio de la carpeta ``ejemplo''
-para observar la estructura de un proyecto de elm. Luego, dentro de la carpeta
-``src'' que ha sido creada en el proyecto, colocar un archivo llamado ``Main.elm''.
-Por ultimo, crear un modulo llamado ``Main'' en dicho archivo agregando el texto:\\\\
-$\mathtt{module\ Main\ exposing\ ()}$\\\\
-Al principio del archivo.
+\section*{Ejercicio \#1 (25\%)}
 
-\section*{Ejercicio \#2 (20\%)}
-Dentro del modulo ``Main'', definir una funci\'on $\mathtt{esPrimo}\ :\ 
-\mathtt{Int}\rightarrow\mathtt{Bool}$ la cual acepta un entero y retorna
-$\mathtt{True}$ si el numero es primo o $\mathtt{False}$ de lo contrario.
-No es necesario hacer logica especial para numeros negativos.
-Luego de definir la funci\'on, asegurarse que:
-\begin{enumerate}
-        \item{Que la funci\'on tenga una {\bf firma}, ver el ejemplo
-        en ``ejemplo/src/Main.elm'', para ver como se le coloca la
-        firma a una funci\'on.}
-        \item{Que el modulo ``Main'' {\bf exponga} la funci\'on, para ello
-        debe cambiar ``$\mathtt{module\ Main\ exposing\ ()}$'' a
-        ``$\mathtt{module\ Main\ exposing\ (esPrimo)}$''}
-        \item{Puede probar que su funci\'on esta implementada correctamete
-        en la terminal interactiva. Para ello:
-        \begin{enumerate}
-                \item{Abra la la terminal interactiva con $\mathtt{elm\ repl}$}
-                \item{Ejecute $\mathtt{import\ Main}$ en la terminal interactiva}
-                \item{Llame a la funci\'on con un valor: $\mathtt{Main.esPrimo}\ 42$}
-        \end{enumerate}
-        }
-\end{enumerate}
-De este momento en adelante, toda funci\'on que sea declarada debe tener
-una {\bf firma} y el modulo debe {\bf exponer} dichas funciones.
+Escriba una funcion llamada $\mathtt{iFilter\ :\ \mathbb{Z}\ \rightarrow\ \mathtt{List}\ \mathbb{Z}\ \rightarrow\ \mathtt{List}\ \mathbb{Z}}$. Esta
+funci\'on debe tomar un entero y una lista de enteros y retornar una nueva lista que tenga todos los valores de la lista
+original excepto los valores divisibles dentro del numero dado.
 
-\section*{Ejercicio \#3 (20\%)}
-La sequencia de Fibonacci se definie asi:
-\[
-        \mathtt{fibonacci}(n) =
-        \left\{
-                \begin{array}{ll}
-                        0  & \mbox{if } x \equiv 0 \\
-                        1 & \mbox{if } x \equiv 1 \\
-                        \mathtt{fibonacci}(n-1)+\mathtt{fibonacci}(n-2) & \mbox{de lo contrario}
+\section*{Ejercicio \#2 (25\%)}
 
-                \end{array}
-        \right.\]
+Escriba una funci\'on llamada $\mathtt{filter}\ :\ (\mathbb{Z}\rightarrow\mathbb{B})
+\ \rightarrow\ \mathtt{List}\ \mathbb{Z}\ \rightarrow\ \mathtt{List}\ \mathbb{Z}$. Esta funci\'on toma
+como primer parametro otra funci\'on que va de numeros enteros a booleanos. Esta
+funci\'on debe ser llamada con todos los elementos de la lista. La lista retornada
+por esta funci\'on debe tener solamente los elementos para los cuales la funci\'on
+que se paso como parametro retorna $\mathbb{True}$.
 
-\section*{Ejercicio \#4 (20\%)}
-Definir la funci\'on $\mathtt{primos}\ :\ \mathtt{Int}\rightarrow \mathtt{List\ Int}$
-la cual retorna una lista de todos los primos menores o iguales a su primer
-parametro.
+\section*{Ejercicio \#3 (25\%)}
 
-\section*{Ejercicio \#5 (20\%)}
-Definir la funci\'on $\mathtt{nPrimos}\ :\ \mathtt{Int}\rightarrow \mathtt{List\ Int}$
-la cual retorna los pirmeros $n$ primos donde $n$ es el primer parametro de la funci\'on.
+Escriba una funci\'on llamada $\mathtt{iZipWith}\ :\ \mathtt{List}\ \mathbb{Z}\ \rightarrow\ \mathtt{List}\ \mathbb{Z}
+\rightarrow\ \mathtt{List}\ \mathbb{Z}$. Esta funci\'on toma dos listas de numeros y retorna
+una lista nueva en donde cada elemento es la suma de los elementos de las listas
+originales que aparecen en la misma posici\'on. Por ejemplo: $\mathtt{iZipWith}\ [1,2,3]\ 
+[4,5,6]$ produce la lista $[5,7,9]$.
 
-% \bibliography{../../recursos/referencias}
-% \bibliographystyle{plain}
+\section*{Ejercicio \#4 (25\%)}
+
+Escriba una funci\'on llamada $\mathtt{zipWith}\ :\ (\mathbb{Z}\rightarrow\mathbb{Z}\rightarrow\mathbb{Z})\ 
+\rightarrow\ \mathtt{List}\ \mathbb{Z}\rightarrow\ \mathtt{List}\ \mathbb{Z}\ \rightarrow\ \mathtt{List}\ \mathbb{Z}$. Esta
+funci\'on es similar a $\mathtt{iZipWith}$ ya que combina los elementos de las dos
+listas que aparecen en la misma posici\'on. Sin embargo en vez de sumar los elementos,
+toma una funci\'on que toma dos enteros y produce un entero de tal forma que los
+elementos de la lista resultante son los elementos producios por la funcion dada
+como primer parametro.
 
 \end{document}
