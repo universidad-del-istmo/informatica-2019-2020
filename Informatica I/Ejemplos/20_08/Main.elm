@@ -52,6 +52,11 @@ existe x xs =
     [] -> False
     b::bs -> if b == x then True else existe x bs
 
+buscar f xs =
+    case xs of
+    [] -> False
+    b::bs -> if f b then True else buscar f bs
+
 sumatoria xs = 
     case xs of
     [] -> 0
@@ -67,3 +72,4 @@ operar f inicial xs =
     case xs of
     [] -> inicial
     b::bs -> f b (operar f inicial bs)    
+
