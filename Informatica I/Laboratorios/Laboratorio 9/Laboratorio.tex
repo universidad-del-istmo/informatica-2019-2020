@@ -1,0 +1,194 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../../recursos/logo.png}}
+ & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica 1 \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Hoja de trabajo \#9} \\
+        \large{Fecha de entrega: 8 de Octubre, 2019 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+
+\emph{Instrucciones: Resolver cada uno de los ejercicios siguiendo sus respectivas
+instrucciones. El trabajo debe ser entregado a traves de Github, en su repositorio del curso, colocado en una
+carpeta llamada "Laboratorio 9". Al menos que la pregunta indique diferente, todas las
+respuestas a preguntas escritas deben presentarse en un documento formato pdf, el cual
+haya sido generado mediante Latex. }\\\\
+
+{\bf Nota: } Para esta tarea, debe tener instalado ``Elm'' en su computadora. Puede obtener
+el lenguaje ``Elm'' en: https://guide.elm-lang.org/install.html
+
+\section*{Ejercicio \#1 (20\%)}
+
+Defina un \emph{tipo generico} llamado $\mathbf{Grupo}$. Este tipo debe tener
+los siguientes constructores:
+\begin{itemize}
+        \item $\mathbf{Valor}\ :\ `t\rightarrow\ (\mathbf{Grupo}\ `t)$
+        \item $\mathbf{Suma}\ :\ (\mathbf{Grupo}\ `t)\rightarrow(\mathbf{Grupo}\ `t)\rightarrow(\mathbf{Grupo}\ `t)$
+        \item $\mathbf{Inverso}\ :\ (\mathbf{Grupo}\ 't) \rightarrow\ (\mathbf{Grupo}\ `t') $
+\end{itemize}
+
+\section*{Ejercicio \#2 (20\%)}
+
+Defina un \emph{tipo generico} llamado $\mathbf{Algebra} `t `s$. Este tipo solamente tiene un constructor:
+\begin{itemize}
+        \item $\mathbf{Algebra}\ :\ (`t \rightarrow `s)\rightarrow (`s\rightarrow`s\rightarrow`s)\rightarrow(`s \rightarrow `s)\rightarrow\mathbf{Algebra}$
+\end{itemize}
+
+A este tipo se le referira como el \emph{algebra de $\mathbf{Grupo}$}. El proposito de este tipo es especificar
+como se debe interpretar un valor de tipo $\mathbf{Grupo}$. Funciona de forma similar a un \emph{fold} ya que
+su primer parametro corresponde al constructor $\mathbf{Grupo}$, su segundo parametro al constructor $\mathbf{Suma}$
+y su tercer parametro al constructor $\mathbf{Inverso}$.
+
+\section*{Ejercicio \#3 (20\%)}
+
+Definir una funci\'on llamada ``$\mathtt{evaluar}\ :\ \mathbf{Algebra}\ `t\ `s\rightarrow\mathbf{Grupo}\ `t\rightarrow`s$''. El proposito de esta funcion es evaluar un $\mathbf{Grupo}$ y
+obtener el resultado final al evaluar un gruop utilizando el algebra proporcionado. Esta funci\'on debe operar de la siguiente manera:
+\begin{itemize}
+        \item{Si el $\mathbf{Grupo}$ es un $\mathbf{Valor}$, utilizar la primera funci\'on del algebra para convertir el valor
+                a un valor de tipo $`a$}
+        \item{Si el $\mathbf{Grupo}$ es una $\mathbf{Suma}$, llamar recurisvamente la funcion $\mathtt{evaluar}$ con cada
+        uno de los parametros de la $\mathbf{Suma}$ y luego obtener el resultado final evaluando los dos valores obtenidos
+        anteriormente con la segunda funci\'on del $\mathtt{Algebra}$}
+        \item{Si el $\mathbf{Grupo}$ es un $\mathbf{Inverso}$, evaluar recurisvamente el parametro de $\mathbf{Inverso}$. Luego
+        utilizar la tercera funci\'on del $\mathbf{Algebra}$ para obtener el resultado final}
+\end{itemize}
+
+\section*{Ejercicio \#4 (40\%)}
+
+El \emph{grupo} $\mathbb{Z}^n$ donde $n$ es primo, es un grupo comunmente utilizado en la criptografia y otras aplicaciones de la computaci\'on
+(\url{https://www.youtube.com/watch?v=kpk2tdsPh0A}). Este grupo esta formado por los numeros $0\ldots(n-1$), en otras palabras,
+todos los numeros enteros empezando en cero y terminando en $n-1$. La suma en $\mathbb{Z}^n$ funciona exactamente igual que
+la suma tradicional excepto que al resultado siempre se le aplica la funci\'on $\mathtt{modulo}$ con base $n$ (residuo del
+resultado al dividirlo dentro de $n$). Tomemos como ejemplo el grupo $\mathbb{Z}^5$ y las siguientes operaci\'ones:
+\begin{itemize}
+        \item{$1+3=4\ (\mathbf{modulo}\ 5)=4$}
+        \item{$2+3=5\ (\mathbf{modulo}\ 5)=0$}
+        \item{$3+4=7\ (\mathbf{modulo}\ 5)=2$}
+\end{itemize}
+
+En otras palabras, los valores producidos al sumar los numeros siempre se colocan en el rango $[0,5)$ (ya que $n=5$).
+\\\\
+El inverso de un grupo es un valor llamado $a^(-1)$ (para todo $a$) tal que se cumple la siguiente propiedad:
+$\forall\ a,b\in\mathbb{Z}^n\ .\ a+b+a^{-1}=b$ en otras palabras, el valor $a^{-1}$ ``invierte'' el efecto causado
+por operar $a$. En los numeros enteros ($\mathbb{Z}$), el inverso de un numero es el negativo de dicho numero. Sin
+embargo, en el grupo $\mathbb{Z}$ no existen los negativos. A pesar de ello si existe el inverso. Tome como ejemplo $\mathbb{Z}^5$:
+\begin{itemize}
+        \item{$(3+2)+2=7\ (\mathbf{modulo}\ 5$)=2}
+        \item{$(3+4)+2=9\ (\mathbf{modulo}\ 5$)=4}
+        \item{$(3+5)+2=10\ (\mathbf{modulo}\ 5)=5$}
+\end{itemize}
+
+En otras palabras, para el grupo $\mathbb{Z}^5$, el \emph{inverso} de $3$ es $2$ ya que este valor hace que la operaci\'on
+entre $3$ y otro numero resulte en el numero que fue operado.
+\\\\
+Su tarea es utilizar este conocimiento para implementar una funci\'on llamada $\mathtt{zAlgebra}\ :\ 
+\mathbf{Int}\rightarrow\mathbf{Algebra\ Int\ Int}$. El primer parametro de esta funci\'on es el valor $n$
+y el algebra retornada debe cumplir con las reglas mencionadas anteriormente. Asegurese de probar que su algebra
+funcione correctamente. Por ejemplo, la siguiente expresi\'on:
+\[
+        \mathtt{evaluar\ (zAlgebra\ 5)}\ (\mathbf{Suma}\ 3\ (\mathbf{Suma}\ 5\ (\mathbf{Inverso}\ 3)))        
+\]
+Produciria $5$ como resultado.
+
+\end{document}
