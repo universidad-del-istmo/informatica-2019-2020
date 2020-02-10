@@ -1,0 +1,187 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article}
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+\newcommand\doubleplus{\ensuremath{\mathbin{+\mkern-10mu+}}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../../recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica II \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Examen Parcial \#1} \\
+        \large{Fecha de entrega: 17 de Febrero, 2019 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+
+\emph{Instrucciones: Resolver cada uno de los ejercicios siguiendo sus respectivas
+instrucciones. El trabajo debe ser entregado a traves de Blackboard. Debbe ser resuelto de
+forma {\bf individual} y el plagio sera sancionado de forma severa. Si tiene dudas o necesita
+apoyo para resolver el examen, puede escribirme un correo.}
+
+\section*{Introducci\'on}
+
+Es possible \emph{codificar} datos dentro de la representaci\'on binaria de un numero. A esto se le conoce
+como \emph{codificaci\'on binaria} y suele ser mucho m\'as eficiente y compacata que la codificaci\'on hecha
+en texto. Por ejemplo, la luz tiene 3 colores primaris: rojo, verde y azul. Cualquier color se puede crear
+mezclando estos tres colores, adicionalmente, se define algo llamado \emph{transparencia} que indica con que
+intensidad se expresa el color final. A esta codificaci\'on se le conoce como \emph{rgba}. Agunos ejemplos:
+\begin{itemize}
+    \item{$\langle 255,\ 0,\ 0,\ 255\rangle$ representa el color rojo fuerte.}
+    \item{$\langle 0,\ 255,\ 0,\ 255\rangle$ representa el color verde fuerte.}
+    \item{$\langle 255,\ 255,\ 0,\ 255\rangle$ representa el color amarillo fuerte ya que es la combinacion de un 50\% rojo y 50\% verde.}
+    \item{$\langle 255,\ 128,\ 0,\ 128\rangle$ representa un color naranja poco intenso (debido a que la transparencia es la mitad).}
+\end{itemize}
+Dado que cada uno de los parametros que forman un color se encuentra entre $0$ y $255$, se pueden representar
+con un $\mathbf{unsigned\ short}$. Dado que cada short tiene 8 bits de longitud (o un byte), un color se puede
+codificar en un $\mathbf{unsigned\ int}$ en donde:
+\begin{itemize}
+    \item{Los bits 0 al 7 representan el numero correspondiente al color rojo.}
+    \item{Los bits 8 al 15 representan el numero correspondiente al color verde.}
+    \item{Los bits 16 al 23 representan el numero correspondiente al color azul. }
+    \item{Los bits 24 al 32 representan el numero correspondiente a la transparencia. }
+\end{itemize}
+Por ejemplo, el color $\langle 255,\ 128,\ 0,\ 128\rangle$ tendria el valor binaro de $10000000000000001000000011111111$.
+\\\\Usted ha sido contratado por una empresa que tiene una flotilla de caminoes que se mueven \emph{exclusivamente en
+la ciudad de Guatemala}.
+Cada camion esta equipado con una \emph{unidad de GPS y monitoreo} que le proporciona los siguientes datos:
+\begin{itemize}
+    \item{Posicion (latitud y longitud)}
+    \item{Velocidad y direcci\'on del movimiento}
+    \item{Aceleraci\'on o taza de cambio de la velocidad}
+    \item{Nivel de combustible y taza de consumo del combustible}
+    \item{Kilometraje actual}
+\end{itemize}
+Estos parametros son capturados por una computadora que procede a enviarlos a traves de la red celular
+mediante internet movil. Para economizar costos, esta computadora solamente esta equipada con
+128 bits de memoria o 2 $\mathbf{unsigned\ long}$ a los cuales llamaremos ``memoria1'' y ``memoria2''.
+
+\section*{Tarea \#1 (30\%)}
+
+Indique como codificara todos los parametros anteriores en los dos $\mathbf{unsigned\ long}$. Apoyese
+del ejemplo de los colores para indicar que datos van a haber en cada uno de los bits de cada uno de
+los 2 $\mathbf{unsigned\ long}$. Indique cuantos bits utilizara para cada uno de los parametros. Puede
+hacer aproximaciones para reducir el espacio, por ejemplo, la precision del kilometraje solo es relevante
+al ``cien'' m\'as cercano, por lo cual 3271 kilometros podria compactarse a 32. Indique que suposiciones
+esta utilizando para dichas compactaciones. En caso que dos $\mathbf{unsigned\ long}$ no sean suficientes,
+puede optar ignorar algunos parametros. De igual forma, si solamente un $\mathbf{usigned\ long}$ es
+suficiente, puede ignorar el segundo. Se le otorgaran puntos extras por presentar soluciones que usen
+solo un $\mathbf{unsigned\ long}$.
+
+\section*{Tarea \#2 (30\%)}
+
+Defina la funci\'on ``codificarMemoriaUno''. Esta funci\'on debe aceptar los parametros necesarios
+que provendrian de la \emph{unidad de monitoreo y gps} y produce un $\mathbf{unsigned\ long}$ con
+los parametros codificados correspondiente a la ``memoria1''. Usted solamente debe definir la funci\'on,
+no se preocupe sobre como esta funci\'on sera llamada. Utilize un parametro diferente para la funci\'on
+por cada uno de los parametros de la \emph{unidad de monitoreo y gps}.
+
+\section*{Tarea \#3 (30\%)}
+
+Similar a la \emph{Tarea \#2}, defina la funci\'on ``codificarMemoria2''. Si ud. solamente necesita
+la ``memoria1'' para codificar todos los parametros, puede dejar esta pregunta sin responder y
+recibira el credito de igual forma.
+
+\section*{Tarea \#4 (10\%)}
+
+Defina una funci\'on \emph{main} donde iniciara la ejecucion de un programa. Esta funci\'on debe
+llamar a ``codificarMemoriaUno'' con valores escogidos por usted mismo y almacenar el resultado
+en una variable de tipo $\mathbf{unsigned\ long}$ llamada ``memoria1''. Hacer lo mismo con
+``memoria2'' si esta utilizando esa memoria tambien.
+
+\end{document}
