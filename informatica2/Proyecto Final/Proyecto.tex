@@ -1,0 +1,170 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Programming/Coding Assignment
+% LaTeX Template
+%
+% This template has been downloaded from:
+% http://www.latextemplates.com
+%
+% Original author:
+% Ted Pavlic (http://www.tedpavlic.com)
+%
+% Note:
+% The \lipsum[#] commands throughout this template generate dummy text
+% to fill the template out. These commands should all be removed when 
+% writing assignment content.
+%
+% This template uses a Perl script as an example snippet of code, most other
+% languages are also usable. Configure them in the "CODE INCLUSION 
+% CONFIGURATION" section.
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%----------------------------------------------------------------------------------------
+%	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
+
+\documentclass{article} 
+
+\usepackage{fancyhdr} % Required for custom headers
+\usepackage{lastpage} % Required to determine the last page for the footer
+\usepackage{extramarks} % Required for headers and footers
+\usepackage[usenames,dvipsnames]{color} % Required for custom colors
+\usepackage{graphicx} % Required to insert images
+\usepackage{listings} % Required for insertion of code
+\usepackage{courier} % Required for the courier font
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{amsmath}
+\usepackage{amssymb}
+
+
+% Margins
+\topmargin=-0.45in
+\evensidemargin=0in
+\oddsidemargin=0in
+\textwidth=6.5in
+\textheight=9.0in
+\headsep=0.25in
+
+\linespread{1.1} % Line spacing
+
+%----------------------------------------------------------------------------------------
+%	CODE INCLUSION CONFIGURATION
+%----------------------------------------------------------------------------------------
+
+\definecolor{MyDarkGreen}{rgb}{0.0,0.4,0.0} % This is the color used for comments
+\lstloadlanguages{c} % Load Perl syntax for listings, for a list of other languages supported see: ftp://ftp.tex.ac.uk/tex-archive/macros/latex/contrib/listings/listings.pdf
+\lstset{language=[sharp]c, % Use Perl in this example
+        frame=single, % Single frame around code
+        basicstyle=\small\ttfamily, % Use small true type font
+        keywordstyle=[1]\color{Blue}\bf, % Perl functions bold and blue
+        keywordstyle=[2]\color{Purple}, % Perl function arguments purple
+        keywordstyle=[3]\color{Blue}\underbar, % Custom functions underlined and blue
+        identifierstyle=, % Nothing special about identifiers                                         
+        commentstyle=\usefont{T1}{pcr}{m}{sl}\color{MyDarkGreen}\small, % Comments small dark green courier font
+        stringstyle=\color{Purple}, % Strings are purple
+        showstringspaces=false, % Don't put marks in string spaces
+        tabsize=5, % 5 spaces per tab
+        %
+        % Put standard Perl functions not included in the default language here
+        morekeywords={rand},
+        %
+        % Put Perl function parameters here
+        morekeywords=[2]{on, off, interp},
+        %
+        % Put user defined functions here
+        morekeywords=[3]{test},
+       	%
+        morecomment=[l][\color{Blue}]{...}, % Line continuation (...) like blue comment
+        numbers=left, % Line numbers on left
+        firstnumber=1, % Line numbers start with line 1
+        numberstyle=\tiny\color{Blue}, % Line numbers are blue and small
+        stepnumber=5 % Line numbers go in steps of 5
+}
+
+\newcommand{\horrule}[1]{\rule{\linewidth}{#1}}
+
+% Creates a new command to include a perl script, the first parameter is the filename of the script (without .pl), the second parameter is the caption
+\newcommand{\perlscript}[2]{
+\begin{itemize}
+\item[]\lstinputlisting[caption=#2,label=#1]{#1.cs}
+\end{itemize}
+}
+
+\begin{document}
+
+\begin{tabular}{l l}
+\multirow{5}{*}{\includegraphics[width=2cm]{../recursos/logo.png}} & Universidad del Istmo de Guatemala \\
+ & Facultad de Ingenieria \\
+ & Ing. en Sistemas \\
+ & Informatica II \\
+ & Prof. Ernesto Rodriguez - \href{mailto:erodriguez@unis.edu.gt}{erodriguez@unis.edu.gt} \\
+\end{tabular}
+\\\\\\
+
+\begin{center}
+        \horrule{0.5pt}
+        \huge{Proyecto Final: Supermercado} \\
+        \large{Fecha de entrega: 11 de Mayo, 2020 - 11:59pm} \\
+        \horrule{1pt}
+\end{center}
+
+\section*{Descripci\'on}
+
+A continuaci\'on se presenta el proyecto final el cual tiene como objetivo que el estudiante
+ponga en practica sus habilidades de programar y resoluci\'on de problemas para un problema
+del mundo real.
+\\\\
+El contexto de este proyecto es que usted ha sido contratado por un supermercado que quiere
+optimizar la forma en que ubica sus productos dentro de una tienda con el proposito de facilitarle
+las compras a sus clientes. Para ello, debera escribir un programa que busque entre los articulos
+que han comprado los clientes del supermercado, cuales son los articulos que se compran frecuentemente
+en conjunto.
+\\\\
+Su programa debe leer linea por linea listas de articulos que han comprado los clientes del supermercado.
+Cada articulo se representara por un numero entero (para facilitar el trabajo) en vez de utilizar el
+nombre del articulo o cualquier otra forma de representarlo. Cada linea de texto representa una lista
+de articulos que compro un cliente separada por coma. Por ejemplo, su programa podria recibir las
+siguientes lineas de texto como entraea:
+\begin{itemize}
+        \item{42,50,11,1,61}
+        \item{11,61,88,33,50,2}
+        \item{1,7,50,30,22,33,42}
+\end{itemize}
+En este ejemplo se puede apreciar que los articulos 42 y 50 fueron comprados en conjunto por
+2 clientes.
+\\\\
+Luego de haber leido todas las listas de articulos (se utilizara una linea vacia para indicar el final)
+su programa debera imprimir una lista que:
+\begin{itemize}
+        \item{Tiene todas las parejas de articulos frecuentemente comprados en conjunto.}
+        \item{Muestra el numero de veces que estos articulos se han comprado en conjunto.}
+        \item{La lista esta ordenada de grupos m\'as frecuentes a menos frecuentes.}
+\end{itemize}
+
+Su trabajo debe ser entregado mediante un repositorio en git. Asegurese que su codigo
+sea ordenado y este bien comentado para facilitar su revision. El trabajo puede hacerse
+de forma individual o en parejas. La nota, sin embargo, sera otorgada de forma individual.
+Ambos recibiran el mismo punteo por el codigo, pero esa nota sera ponderada por el conocimiento
+individual que tenga cada miembro del codigo el cual sera evaluado mediante una evaluaci\'on
+oral del codigo.
+
+\section*{Extra: (5 puntos netos)}
+
+Extienda el programa para que no solamente busque las parejas de articulos comprados frecuentemente,
+sino que haga un conteo de los grupos de articulos de tama\~no arbitrario que se compran con
+frecuencia. Los resultados deben ser odrdenados primero por el tama\~no del grupo de articulos y
+luego por la cantidad de veces que aparece cada uno de los grupos.
+
+\section*{Extras: (5 puntos netos)}
+
+Se otorgaran puntos extras por entregar un programa con mejoras adicionales. Estas pueden
+ser:
+\begin{itemize}
+        \item{Interfaz grafica}
+        \item{Pruebas unitarias (cpptest o googletest)}
+        \item{Utilizaci\'on de una base de datos para realizar el trabajo}
+        \item{Utilizar gnuplot u otra herramienta para generar un grafico con los resultados del programa.}
+\end{itemize}
+
+\end{document}
