@@ -31,7 +31,7 @@ acepta un vector y le suma dicho vector a la velocidad actual del vehiculo.
 */
 
 /*
-Defina la funcion "validarAvance". Esta funcion debe calcular la suma
+Problema 4 (30%): Defina la funcion "validarAvance". Esta funcion debe calcular la suma
 de la posicion y la velocidad del vehiculo. Esta seria la posicion
 nueva del vehiculo. Luego debe validar que siguiendo una linea recta
 entre la posicion actual y la posicion nueva, todos los espacios recorridos
