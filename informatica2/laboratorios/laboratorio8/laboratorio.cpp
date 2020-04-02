@@ -64,6 +64,7 @@ int main()
     std::getline(std::cin, name);
 
     std::cout << "Su nombre es: " << name << "\n";
+    printf("La longitud es: %i\n", name.size());
 
     return 0;
 }
